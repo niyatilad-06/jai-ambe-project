@@ -6,12 +6,20 @@ function Products() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/bearings?populate=*`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log("API DATA:", data);
-        setProducts(data.data);
+      .then((res) => {
+        console.log("API DATA:", res);
+
+        // ✅ SAFE FIX
+        setProducts(res?.data || []);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setProducts([]); // ✅ prevent crash
+      });
   }, []);
+
+  // ✅ PREVENT WHITE SCREEN
+  if (!products || products.length === 0) return null;
 
   return (
     <section id="products" className="section-padding">
@@ -22,12 +30,15 @@ function Products() {
 
         <div className="row">
           {products.map((item, i) => {
-            const title = item?.title || item?.attributes?.title;
-            const desc = item?.description || item?.attributes?.description;
+            const title =
+              item?.attributes?.title || item?.title;
+
+            const desc =
+              item?.attributes?.description || item?.description;
 
             const image =
-              item?.image?.url ||
-              item?.attributes?.image?.data?.attributes?.url;
+              item?.attributes?.image?.data?.attributes?.url ||
+              item?.image?.url;
 
             return (
               <div className="col-md-6" key={i}>
