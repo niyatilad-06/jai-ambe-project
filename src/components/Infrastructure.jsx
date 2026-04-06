@@ -4,7 +4,7 @@ function Infrastructure() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("https://renowned-unity-60b52ac485.strapiapp.com/api/infrastructure?populate=*")
+    fetch("http://localhost:1337/api/infrastructure?populate=*")
       .then((res) => res.json())
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));

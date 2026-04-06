@@ -4,7 +4,7 @@ function Applications() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://renowned-unity-60b52ac485.strapiapp.com/api/applications?populate=*")
+    fetch("http://localhost:1337/api/applications?populate=*")
       .then((res) => res.json())
       .then((res) => {
         setData(res.data || []);
@@ -26,7 +26,7 @@ function Applications() {
                 <img
                   src={
                     item.image?.url
-                      ? "https://renowned-unity-60b52ac485.strapiapp.com" + item.image.url
+                      ? "http://localhost:1337" + item.image.url
                       : "https://via.placeholder.com/300x200"
                   }
                   className="img-fluid rounded w-100"

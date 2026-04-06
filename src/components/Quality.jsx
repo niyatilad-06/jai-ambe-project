@@ -3,15 +3,12 @@ import { useEffect, useState } from "react";
 function Quality() {
   const [cards, setCards] = useState([]);
 
-  const BASE_URL = "https://renowned-unity-60b52ac485.strapiapp.com";
-
   useEffect(() => {
-    fetch(`${BASE_URL}/api/service-cards?populate=*`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/service-cards?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setCards(data.data || []);
-      })
-      .catch((err) => console.log(err));
+      });
   }, []);
 
   return (
@@ -28,22 +25,20 @@ function Quality() {
 
           {cards.map((card, index) => {
 
-            const title = card?.title || card?.attributes?.title;
+            const title =
+              card?.title || card?.attributes?.title;
 
             const image =
               card?.image?.url ||
               card?.attributes?.image?.data?.attributes?.url;
 
-            // ✅ FIXED IMAGE URL
             const imageUrl = image
-              ? (image.startsWith("http")
-                  ? image
-                  : BASE_URL + image)
+              ? `${import.meta.env.VITE_API_URL}${image}`
               : "";
 
             return (
               <div
-                key={card.id || index}
+                key={card.id}
                 className="col-lg-6 col-md-6"
                 data-aos="fade-up"
                 data-aos-delay={index * 200}
@@ -52,13 +47,11 @@ function Quality() {
                 <div className="service-item position-relative overflow-hidden">
 
                   <div className="service-img">
-                    {imageUrl && (
-                      <img
-                        src={imageUrl}
-                        alt={title}
-                        className="img-fluid w-100"
-                      />
-                    )}
+                    <img
+                      src={imageUrl}
+                      alt={title}
+                      className="img-fluid w-100"
+                    />
                   </div>
 
                   <div className="service-text text-center">

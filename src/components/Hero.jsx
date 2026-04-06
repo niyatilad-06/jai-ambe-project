@@ -4,7 +4,7 @@ function Hero() {
   const [hero, setHero] = useState(null);
 
   useEffect(() => {
-    fetch("https://renowned-unity-60b52ac485.strapiapp.com/api/hero-sections?populate=*")
+    fetch("http://localhost:1337/api/hero-sections?populate=*")
       .then((res) => res.json())
       .then((data) => {
         console.log("API:", data);
@@ -18,13 +18,10 @@ function Hero() {
 
   if (!hero) return <p>Loading...</p>;
 
-  const BASE_URL = "https://renowned-unity-60b52ac485.strapiapp.com";
-
-const imageUrl = hero?.heroImage?.url
-  ? (hero.heroImage.url.startsWith("http")
-      ? hero.heroImage.url
-      : BASE_URL + hero.heroImage.url)
-  : "https://via.placeholder.com/500x300";
+  // ✅ Image Fix (Strapi v5)
+  const imageUrl = hero?.heroImage?.url
+    ? "http://localhost:1337" + hero.heroImage.url
+    : "https://via.placeholder.com/500x300";
 
   // ✅ Description Fix (Rich Text safe)
   const description =

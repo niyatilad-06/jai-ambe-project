@@ -5,12 +5,12 @@ function Contact() {
   const [footer, setFooter] = useState(null);
 
   useEffect(() => {
-    fetch("https://renowned-unity-60b52ac485.strapiapp.com/api/contact?populate=*")
+    fetch("http://localhost:1337/api/contact")
       .then((res) => res.json())
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
 
-    fetch("https://renowned-unity-60b52ac485.strapiapp.com/api/?populate=*")
+    fetch("http://localhost:1337/api/footers")
       .then((res) => res.json())
       .then((res) => setFooter(res.data[0]?.attributes))
       .catch((err) => console.error(err));
