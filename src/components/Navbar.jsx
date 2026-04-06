@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../assets/company_logo.png";
 
+const BASE_URL = "https://renowned-unity-60b52ac485.strapiapp.com";
+
 function Navbar() {
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/navbars`)
+      .get(`${BASE_URL}/api/navbars`)
       .then((res) => {
-        setMenu(res.data.data);
+        setMenu(res.data.data || []);
       })
       .catch((err) => {
         console.log(err);
@@ -41,18 +43,26 @@ function Navbar() {
 
               {menu.length > 0 &&
                 menu
-                  .sort((a, b) => a.order - b.order)
-                  .map((item) => (
-                    <li className="nav-item" key={item.id}>
-                      <a
-                        className="nav-link"
-                        href={`#${item.link ? item.link.replace("/", "") : ""}`}
-                      >
-                        {item.title}
-                      </a>
-                    </li>
-                  ))
-              }
+                  .sort((a, b) => {
+                    const orderA = a?.attributes?.order || 0;
+                    const orderB = b?.attributes?.order || 0;
+                    return orderA - orderB;
+                  })
+                  .map((item) => {
+                    const title = item?.attributes?.title;
+                    const link = item?.attributes?.link;
+
+                    return (
+                      <li className="nav-item" key={item.id}>
+                        <a
+                          className="nav-link"
+                          href={`#${link ? link.replace("/", "") : ""}`}
+                        >
+                          {title}
+                        </a>
+                      </li>
+                    );
+                  })}
 
             </ul>
           </div>
