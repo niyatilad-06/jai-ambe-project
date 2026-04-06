@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function Applications() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/applications?populate=*")
+    fetch(`${BASE_URL}/api/applications?populate=*`)
       .then((res) => res.json())
       .then((res) => {
         setData(res.data || []);
@@ -14,34 +16,25 @@ function Applications() {
 
   return (
     <section id="industries" className="py-5 bg-light">
-      <div className="container-fluid text-center" style={{ padding: "0 50px" }}>
-        
-        <h2 className="fw-bold mb-5">Applications</h2>
+      <div className="container text-center">
+        <h2>Applications</h2>
 
-        <div className="row g-3 justify-content-center">
-          {data.slice(0, 4).map((item, i) => (
-            <div className="col-md-6 col-lg-3" key={i}>
-              <div className="card p-3 shadow">
-                
+        <div className="row">
+          {data.map((item, i) => {
+            const image =
+              item?.attributes?.image?.data?.attributes?.url;
+
+            return (
+              <div className="col-md-3" key={i}>
                 <img
-                  src={
-                    item.image?.url
-                      ? "http://localhost:1337" + item.image.url
-                      : "https://via.placeholder.com/300x200"
-                  }
-                  className="img-fluid rounded w-100"
-                  style={{
-                    height: "280px",
-                    objectFit: "cover",
-                  }}
-                  alt="application"
+                  src={image ? `${BASE_URL}${image}` : ""}
+                  alt=""
+                  className="img-fluid"
                 />
-
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
       </div>
     </section>
   );
