@@ -1,0 +1,550 @@
+
+        :root {
+            --teal: #00a6b6;
+            --teal-dark: #008392;
+            --dark: #1b1f2a;
+            --light-bg: #f5f7fb;
+            --text-main: #333333;
+            --border-soft: #e0e4f0;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+            font-size: 16.5px;      /* slightly larger base text */
+        }
+        a { color: var(--teal); }
+        a:hover { color: var(--teal-dark); }
+    
+        .brand-main { letter-spacing:0.08em; }
+        .brand-tagline { font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase; }
+    
+        /* NAVBAR FONT + PADDING */
+        .navbar-light .navbar-nav .nav-link {
+            color: #333;
+            padding: 0.75rem 0;     /* more vertical padding */
+            font-size: 1rem;     /* bigger nav text */
+        }
+        .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: var(--teal);
+        }
+    
+        /* brand + nav close together */
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;            /* distance between logo and first menu item */
+        }
+        .navbar-brand {
+            margin-right: 0;        /* remove default Bootstrap margin */
+        }
+        .navbar-expand-lg .navbar-collapse {
+            flex-grow: 0;           /* don't stretch and create empty space */
+        }
+        .main-nav {
+            gap: 1.6rem;            /* spacing between menu items */
+        }
+    
+        .hero-section {
+            height:90px;min-height:520px;color:#fff;position:relative;overflow:hidden;
+        }
+        .hero-bg {
+            position:absolute;inset:0;background-size:cover;background-position:center;
+            transform:scale(1.05);
+        }
+        .hero-overlay {
+            position:absolute;inset:0;
+            background:radial-gradient(circle at top left,rgba(0,166,182,0.75),rgba(0,0,0,0.8));
+        }
+        .hero-section .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;   /* 🔥 increase overall section width */
+}
+
+/* Make card bigger */
+.hero-image-card {
+    width: 110%;
+    max-width: 1000px;   /* 🔥 increase card size */
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* Make image fill the card */
+.hero-image-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;  /* full image visible */
+    display: block;
+}
+
+/* Optional */
+.hero-card-illustration {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    object-fit: contain;
+}
+    
+        .btn-teal {
+            background-color:var(--teal);border-color:var(--teal);color:#fff;
+        }
+        .btn-teal:hover {
+            background-color:var(--teal-dark);border-color:var(--teal-dark);color:#fff;
+        }
+    
+        /* SECTION PADDING + TITLES */
+        .section-padding {
+            padding: 100px 0;       /* more vertical spacing between sections */
+        }
+        .section-kicker {
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.8rem;
+    color:var(--teal);
+    font-weight:700;
+}
+
+#quality .section-kicker{
+    font-size:1.6rem;
+}
+
+/* ONLY make ABOUT, PRODUCTS, MANUFACTURING bigger */
+#about .section-kicker,
+#products .section-kicker,
+#manufacturing .section-kicker {
+    font-size:1.3rem;
+}
+        .section-title {
+            font-weight:700;
+            margin-top:0.5rem;
+            margin-bottom:1.2rem;
+            font-size:2.1rem;       /* larger section headings */
+        }
+
+               /* About section emphasis */
+               #about .section-title {
+            font-size:2.4rem;
+        }
+        #about p {
+            font-size:1.05rem;
+            line-height:1.7;
+        }
+    
+        .about-image-grid { position:relative; }
+        .about-img-main { border-radius:1rem;overflow:hidden; }
+        .about-img-secondary {
+            position:absolute;bottom:-20px;right:-10px;width:55%;
+            border-radius:1rem;overflow:hidden;border:4px solid #fff;
+        }
+        .highlight-box {
+            background:#fff;border-radius:0.75rem;padding:1rem 1.2rem;
+            border:1px solid var(--border-soft);
+        }
+        .highlight-number {
+            display:block;font-size:1.6rem;font-weight:700;color:var(--teal);
+        }
+        .highlight-label {
+            font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:#7a7f90;
+        }
+    
+        .product-title { font-weight:700;margin-bottom:0.75rem; }
+        .product-list li { margin-bottom:0.45rem; }
+        .product-image-card { border-radius:1rem;overflow:hidden;background:#fff; }
+        .product-image-card img { max-height:270px;width:100%;object-fit:cover; }
+        .product-image-strip {
+            display:flex;gap:4px;padding:4px;background:#f5f5f7;
+        }
+        .product-image-strip img {
+            width:50%;height:80px;object-fit:cover;border-radius:0.4rem;
+        }
+
+        /* Product cards - redesigned */
+        #products .section-title { font-size:2.5rem; }
+        #products p.text-muted { font-size:1.15rem; }
+        .product-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem; }
+        .product-card {
+            background:#fff;border-radius:16px;overflow:hidden;
+            box-shadow:0 4px 24px rgba(0,0,0,0.06);
+            border:1px solid var(--border-soft);
+            transition:transform 0.3s ease,box-shadow 0.3s ease;
+            display:flex;flex-direction:column;
+        }
+        .product-card:hover {
+            transform:translateY(-6px);
+            box-shadow:0 12px 40px rgba(0,0,0,0.1);
+        }
+        .product-card .card-image-wrapper {
+            position:relative;aspect-ratio:4/3;overflow:hidden;
+            background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);
+        }
+        .product-card .card-image { width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease; }
+        .product-card:hover .card-image { transform:scale(1.05); }
+        .product-card .card-content { padding:1.75rem;flex:1;display:flex;flex-direction:column; }
+        .product-card .card-title { font-size:1.75rem;font-weight:700;color:var(--dark);margin-bottom:0.5rem; }
+        .product-card .card-desc { font-size:1.1rem;color:#334155;margin-bottom:1rem;line-height:1.6; }
+        .product-card .card-features { list-style:none;margin-top:auto;padding:0; }
+        .product-card .card-features li {
+            font-size:1.05rem;color:#334155;padding:0.4rem 0;padding-left:1.35rem;
+            position:relative;
+        }
+        .product-card .card-features li::before {
+            content:'';position:absolute;left:0;top:0.75rem;
+            width:6px;height:6px;background:var(--teal);border-radius:50%;
+        }
+    
+        .process-card {
+            background:#fff;border-radius:0.85rem;padding:1rem 1.1rem;
+            border:1px solid var(--border-soft);
+        }
+/* Manufacturing - image cards with animation */
+
+#manufacturing .section-title {
+    font-size:2.5rem;
+}
+
+#manufacturing p.text-muted {
+    font-size:1.15rem;
+}
+
+/* Top Manufacturing Image */
+
+.mfg-hero-img{
+    border-radius:18px;
+    overflow:hidden;
+    height:500px;
+    max-width:1200px;
+    margin:auto;
+    box-shadow:0 12px 35px rgba(0,0,0,0.12);
+    animation:mfgFadeIn 0.8s ease-out;
+}
+
+.mfg-hero-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Manufacturing Cards */
+
+.mfg-process-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #e5e7eb;
+    box-shadow:0 10px 28px rgba(0,0,0,0.08);
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+    animation:mfgFadeUp 0.6s ease-out backwards;
+}
+
+.mfg-process-card:nth-child(1){animation-delay:0.1s;}
+.mfg-process-card:nth-child(2){animation-delay:0.2s;}
+.mfg-process-card:nth-child(3){animation-delay:0.3s;}
+.mfg-process-card:nth-child(4){animation-delay:0.4s;}
+
+.mfg-process-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 45px rgba(0,0,0,0.15);
+}
+
+/* Card Image */
+
+.mfg-process-card .mfg-img-wrap{
+    height:180px;
+    overflow:hidden;
+    position:relative;
+}
+
+.mfg-process-card .mfg-img-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.5s ease;
+}
+
+.mfg-process-card:hover .mfg-img-wrap img{
+    transform:scale(1.08);
+}
+
+/* Icon on Card */
+
+.mfg-process-card .mfg-img-wrap .mfg-icon{
+    position:absolute;
+    bottom:1rem;
+    right:1rem;
+    width:48px;
+    height:48px;
+    background:var(--teal);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:1.25rem;
+}
+
+/* Card Text */
+
+.mfg-process-card .mfg-body{
+    padding:1.25rem 1.5rem;
+}
+
+.mfg-process-card .mfg-body h6{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--dark);
+    margin-bottom:0.4rem;
+}
+
+.mfg-process-card .mfg-body p{
+    font-size:0.95rem;
+    color:#475569;
+    line-height:1.5;
+    margin:0;
+}
+
+/* Animations */
+
+@keyframes mfgFadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes mfgFadeUp{
+    from{
+        opacity:0;
+        transform:translateY(24px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+    
+        .service-card {
+            background:#fff;border-radius:1rem;padding:1.5rem 1.6rem;
+            border:1px solid var(--border-soft);
+        }
+        .service-header h4 { font-weight:700; }
+    
+        .stat-card {
+            background:#fff;border-radius:0.9rem;padding:1.1rem 0.5rem;
+            border:1px solid var(--border-soft);
+        }
+        .stat-number { font-weight:700;color:var(--teal); }
+        .stat-label {
+            font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:#7a7f90;
+        }
+/* =========================
+   INDUSTRY GRID
+========================= */
+
+.industry-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:50px;
+margin-top:70px;
+width:95%;
+max-width:1800px;
+margin-left:auto;
+margin-right:auto;
+}
+
+
+/* =========================
+   INDUSTRY CARD
+========================= */
+
+.industry-card{
+background:#ffffff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #e2e8f0;
+box-shadow:0 18px 45px rgba(0,0,0,0.12);
+transition:all 0.35s ease;
+aspect-ratio:1/1;
+min-height:450px;
+display:flex;
+flex-direction:column;
+cursor:pointer;
+}
+
+.industry-card:hover{
+transform:translateY(-14px);
+box-shadow:0 28px 65px rgba(0,0,0,0.18);
+}
+
+
+/* =========================
+   IMAGE SECTION
+========================= */
+
+.industry-img{
+height:50%;
+overflow:hidden;
+}
+
+.industry-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.6s ease;
+}
+
+.industry-card:hover img{
+transform:scale(1.1);
+}
+
+
+/* =========================
+   TEXT SECTION
+========================= */
+
+.industry-body{
+height:50%;
+padding:1.8rem;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+}
+
+.industry-body h5{
+font-size:1.45rem;
+font-weight:700;
+margin-bottom:0.7rem;
+color:#0f172a;
+}
+
+.industry-body p{
+font-size:1.05rem;
+color:#475569;
+line-height:1.6;
+margin:0;
+}
+
+.section-kicker{
+font-size:28px;
+font-weight:700;
+letter-spacing:3px;
+text-transform:uppercase;
+color:#0ea5a4;
+}
+.infra-gallery {
+  width: 100%;
+  max-width: 1400px;   /* 🔥 increase overall section width */
+  margin: auto;
+  display: flex;
+  gap: 40px;
+}
+
+/* LEFT CONTENT */
+.infra-gallery .content {
+  width: 35%;   /* 🔥 reduce text width */
+}
+
+/* RIGHT IMAGE */
+.infra-gallery .image {
+  width: 85%;   /* 🔥 give more space to image */
+}
+
+/* ✅ IMAGE (proper scaling) */
+.infra-gallery .image img {
+  width: 200%;        /* fill full container */
+  height: 500px;      /* 🔥 increase height */
+  object-fit: cover;  /* nice crop */
+  display: block;
+}
+
+/* list text */
+.product-list li{
+font-size:1rem;
+margin-bottom:8px;
+}
+
+/* contact item spacing */
+
+.contact-item{
+display:flex;
+align-items:flex-start;
+margin-bottom:18px;
+}
+
+.contact-item i{
+margin-top:5px;
+}
+    
+        #contact {
+            background-image:radial-gradient(circle at top left,rgba(0,166,182,0.3),transparent),
+            linear-gradient(135deg,#151820,#111318);
+        }
+        .contact-item { display:flex;align-items:flex-start;margin-bottom:1.2rem; }
+        .contact-item .fw-semibold {
+            font-size:0.9rem;text-transform:uppercase;letter-spacing:0.12em;
+        }
+        .contact-form-wrapper {
+            border:1px solid rgba(255,255,255,0.06);
+        }
+    
+        @media (max-width:991.98px) {
+            .hero-section { height:auto;padding:110px 0 70px; }
+            .about-img-secondary {
+                position:static;width:60%;margin-top:1rem;
+            }
+        }
+        @media (max-width:575.98px) {
+            .section-padding { padding:60px 0; }
+            .hero-section .display-4 { font-size:2.1rem; }
+        }
+
+/* =========================
+   QUALITY SERVICE CARDS
+========================= */
+
+.service-item{
+background:#ffffff;
+border-radius:16px;
+overflow:hidden;
+border:1px solid #e2e8f0;
+box-shadow:0 12px 30px rgba(0,0,0,0.10);
+transition:all 0.35s ease;
+display:flex;
+flex-direction:column;
+height:520px;   /* increase total card height */
+}
+
+/* IMAGE AREA BIGGER */
+
+.service-img{
+height:450px;   /* increase image height */
+overflow:hidden;
+}
+
+.service-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.5s ease;
+}
+
+.service-item:hover .service-img img{
+transform:scale(1.08);
+}
+
+/* TEXT AREA SMALLER */
+
+.service-text{
+padding:1.2rem 1rem;
+text-align:center;
+}
+
+.service-text h5{
+font-size:1.15rem;
+font-weight:700;
+margin:0;
+}
+   

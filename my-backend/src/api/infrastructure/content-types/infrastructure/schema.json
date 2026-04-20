@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "infrastructures",
+  "info": {
+    "singularName": "infrastructure",
+    "pluralName": "infrastructures",
+    "displayName": "infrastructure"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "plants": {
+      "type": "integer"
+    },
+    "warehouses": {
+      "type": "integer"
+    },
+    "products": {
+      "type": "integer"
+    },
+    "customers": {
+      "type": "integer"
+    },
+    "experience": {
+      "type": "integer"
+    },
+    "presence": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "manufacturing_sections",
+  "info": {
+    "singularName": "manufacturing-section",
+    "pluralName": "manufacturing-sections",
+    "displayName": "manufacturing-section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
